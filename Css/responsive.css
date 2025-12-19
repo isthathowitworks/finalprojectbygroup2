@@ -1,9 +1,169 @@
-@media (max-width: 900px) {
-            .layout-container { height: auto; }
-            .top-nav { flex-direction: column; }
-            .top-nav-btn { border-right: none; border-bottom: 1px solid var(--border-color); padding: 15px; }
-            .top-nav-btn:last-child { border-bottom: none; }
-            #main-content-display { min-height: 500px; padding: 25px; }
-            .float-img { float: none; width: 100%; margin: 20px 0; transform: rotate(0); }
-            .gallery-grid { flex-direction: column; align-items: center; }
-        }
+/* ===================== RESPONSIVE CSS ===================== */
+
+/* Mobile first (default adjustments) */
+@media screen and (max-width: 768px) {
+    .content-area {
+        padding: 20px 20px; /* smaller padding on mobile */
+    }
+
+    .head-bar nav button {
+        padding: 15px 20px; /* smaller buttons */
+        font-size: 0.9rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    .float-img {
+        float: none;
+        width: 100%;
+        margin: 0 0 20px 0;
+    }
+
+    .gallery-grid {
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .gallery-card {
+        width: 45%;
+    }
+
+    .quiz-box {
+        padding: 20px;
+    }
+
+    .retry-btn {
+        width: 25px;
+        height: 25px;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+    }
+}
+
+/* Smaller mobile */
+@media screen and (max-width: 480px) {
+    .head-bar nav {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .head-bar nav button {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 0.85rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+    }
+
+    .gallery-card {
+        width: 90%;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .quiz-box {
+        padding: 15px;
+    }
+
+    .retry-btn {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Tablet landscape */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .content-area {
+        padding: 20px 50px;
+    }
+
+    .head-bar nav button {
+        padding: 18px 50px;
+        font-size: 0.95rem;
+    }
+
+    h2 {
+        font-size: 2.2rem;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+    }
+
+    .gallery-card {
+        width: 30%;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .modal-inner {
+        flex-direction: column;   
+        max-width: 90%;
+        max-height: 90vh;      /* stay within screen height */
+        overflow-y: auto;       /* enable vertical scroll */
+        padding: 10px;
+        margin-top: 50px;       /* ensure space below head bar */
+        margin-bottom: 50px;    /* some bottom spacing */
+    }
+
+    .modal-left {
+        margin-right: 0;
+        padding-right: 0;
+        border-right: none;      
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .modal-content {
+        max-width: 100%;
+        max-height: none;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    #modalCaption {
+        height: auto;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .modal-right {
+        width: 100%;
+        padding: 0;
+        height: auto;
+        max-height: none;
+        font-size: 0.9rem;
+    }
+
+    /* Center modal relative to viewport */
+    .modal {
+        align-items: flex-start;  /* start from top */
+        justify-content: center;  /* vertical center with margin-top space */
+        padding-top: 60px;        /* extra space from headbar */
+        padding-bottom: 20px;
+    }
+}
+
