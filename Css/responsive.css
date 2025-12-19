@@ -1,14 +1,26 @@
 /* ===================== RESPONSIVE CSS ===================== */
 
-/* Mobile first (default adjustments) */
-@media screen and (max-width: 768px) {
+/* --------------------- Mobile First --------------------- */
+@media screen and (max-width: 480px)  {
     .content-area {
-        padding: 20px 20px; /* smaller padding on mobile */
+        padding: 120px 20px 20px 20px; /* smaller padding */
+        
+    }
+    .head-bar {
+        height: 190px;
     }
 
+
+
     .head-bar nav button {
-        padding: 15px 20px; /* smaller buttons */
+        padding: 0 20px 0 70px;
         font-size: 0.9rem;
+    }
+
+    .head-bar nav button.active {
+        width: 800px;          /* 👈 change this value */
+        align-self: center;  /* keeps it centered */
+        height: auto;
     }
 
     h2 {
@@ -49,7 +61,7 @@
     }
 }
 
-/* Smaller mobile */
+/* --------------------- Smaller Mobile --------------------- */
 @media screen and (max-width: 480px) {
     .head-bar nav {
         flex-direction: column;
@@ -88,7 +100,18 @@
     }
 }
 
-/* Tablet landscape */
+@media screen and (max-width: 480px) {
+    .gallery-card {
+        width: 48%; /* roughly half of the container, with some gap */
+        margin-bottom: 10px; /* optional spacing between rows */
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr); /* two columns in footer if needed */
+    }
+}
+
+/* --------------------- Tablet Landscape --------------------- */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
     .content-area {
         padding: 20px 50px;
@@ -116,21 +139,21 @@
     }
 }
 
+/* --------------------- Modal Responsive --------------------- */
 @media screen and (max-width: 768px) {
     .modal-inner {
-        flex-direction: column;   
+        flex-direction: column;
         max-width: 90%;
-        max-height: 90vh;      /* stay within screen height */
-        overflow-y: auto;       /* enable vertical scroll */
+        max-height: 90vh;
+        overflow-y: auto;      /* scroll if content too tall */
         padding: 10px;
-        margin-top: 50px;       /* ensure space below head bar */
-        margin-bottom: 50px;    /* some bottom spacing */
+        margin: 50px auto;     /* center vertically with spacing */
     }
 
     .modal-left {
         margin-right: 0;
         padding-right: 0;
-        border-right: none;      
+        border-right: none;
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -139,7 +162,6 @@
 
     .modal-content {
         max-width: 100%;
-        max-height: none;
         height: auto;
         margin-bottom: 10px;
     }
@@ -160,10 +182,9 @@
 
     /* Center modal relative to viewport */
     .modal {
-        align-items: flex-start;  /* start from top */
-        justify-content: center;  /* vertical center with margin-top space */
-        padding-top: 60px;        /* extra space from headbar */
+        align-items: flex-start;  /* top alignment */
+        justify-content: center;  /* horizontal center */
+        padding-top: 60px;        /* space from fixed head-bar */
         padding-bottom: 20px;
     }
 }
-
