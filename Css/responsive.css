@@ -144,7 +144,7 @@
     .modal-inner {
         flex-direction: column;
         max-width: 90%;
-        max-height: 90vh;
+        max-height: 60vh;
         overflow-y: auto;      /* scroll if content too tall */
         padding: 10px;
         margin: 50px auto;     /* center vertically with spacing */
@@ -182,9 +182,10 @@
 
     /* Center modal relative to viewport */
     .modal {
-        align-items: flex-start;  /* top alignment */
-        justify-content: center;  /* horizontal center */
-        padding-top: 60px;        /* space from fixed head-bar */
-        padding-bottom: 20px;
+        display: flex;
+        align-items: center;       /* vertical center */
+        justify-content: center;   /* horizontal center */
+        padding: 20px;             /* optional spacing from edges */
+        margin-top: 115px; 
     }
 }
