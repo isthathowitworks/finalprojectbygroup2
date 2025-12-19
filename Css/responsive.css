@@ -1,0 +1,9 @@
+@media (max-width: 900px) {
+            .layout-container { height: auto; }
+            .top-nav { flex-direction: column; }
+            .top-nav-btn { border-right: none; border-bottom: 1px solid var(--border-color); padding: 15px; }
+            .top-nav-btn:last-child { border-bottom: none; }
+            #main-content-display { min-height: 500px; padding: 25px; }
+            .float-img { float: none; width: 100%; margin: 20px 0; transform: rotate(0); }
+            .gallery-grid { flex-direction: column; align-items: center; }
+        }

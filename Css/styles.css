@@ -1,0 +1,426 @@
+/* ===================== VARIABLES ===================== */
+:root {
+    --bg-color: #2b221b; 
+    --paper-color: #f3e5c0; 
+    --paper-texture: url('https://www.transparenttextures.com/patterns/rice-paper-2.png');
+    --text-color: #2c241b;
+    --accent-gold: #c5a059;
+    --accent-red: #8f2525;
+    --border-color: #5d4037;
+}
+
+/* ===================== RESET ===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Merriweather', serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.8;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1; /* this makes main content take all available space */
+}
+
+.head-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background-color: var(--text-color); /* dark background from picture */
+    display: flex;
+    justify-content: center; /* center nav buttons */
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    z-index: 1000;
+    font-family: 'Oswald', sans-serif;
+}
+
+.head-bar nav {
+    display: flex;
+    gap: 0;
+}
+
+.head-bar nav button {
+    background: var(--text-color);
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    padding:20px 70px 20px 70px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 12px;
+
+}
+
+.head-bar nav button:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.head-bar nav button.active {
+    background-color: var(--accent-gold); /* gold highlight like picture */
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+/* ===================== MAIN CONTENT ===================== */
+.content-area {
+    width: 100%;
+    margin-top: 80px;
+    padding: 20px 100px 20px 100px;
+    background-color: var(--paper-color);
+    background-image: var(--paper-texture);
+    overflow-y: auto;
+    height: auto;
+}
+
+/* ===================== PAGE TEMPLATES ===================== */
+.page-template {
+    display: none;
+}
+
+h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    color: var(--accent-red);
+    border-bottom: 3px double var(--text-color);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.6rem;
+    color: #5d4037;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    border-left: 5px solid var(--accent-gold);
+    padding-left: 15px;
+}
+
+p {
+    margin-bottom: 20px;
+    text-align: justify;
+    font-size: 1.15rem;
+}
+
+/* ===================== FLOATING IMAGE ===================== */
+.float-img {
+    float: right;
+    width: 320px;
+    margin: 0 0 20px 30px;
+    padding: 10px;
+    background: white;
+    box-shadow: 4px 4px 15px rgba(0,0,0,0.3);
+    border: 1px solid #ccc;
+    transform: rotate(2deg);
+}
+
+.float-img img {
+    width: 100%;
+    height: auto;
+}
+
+.caption {
+    font-size: 0.9rem;
+    color: #555;
+    text-align: center;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* ===================== BOOK SUMMARIES ===================== */
+.book-container {
+    background: rgba(255,255,255,0.6);
+    border: 1px solid #aaa;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 6px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+}
+
+.book-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--accent-red);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.book-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent-red);
+}
+
+.book-year {
+    font-weight: bold;
+    color: #555;
+}
+
+/* ===================== QUIZ ===================== */
+.quiz-box {
+    background: #fff;
+    padding: 30px;
+    border: 2px solid var(--accent-gold);
+    margin-top: 30px;
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between; /* left title, right button */
+    align-items: center;            /* vertically center both */
+}
+
+/* retry icon */
+.retry-wrapper {
+    position: relative; /* needed for tooltip positioning */
+    display: inline-block;
+    cursor: pointer;
+}
+
+.retry-wrapper::after {
+    content: "Do you want to try again?";
+    position: absolute;
+    top: 90%; /* moves it below the button */
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--text-color);
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    font-weight: normal;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.retry-wrapper:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0); /* moves to final position */
+}
+
+/* style for the image itself */
+.retry-btn {
+    width: 30px;
+    height: 30  px;
+    transition: transform 0.2s;
+}
+
+
+/* Rotate image on hover only */
+.retry-wrapper:hover .retry-btn {
+    transform: rotate(180deg);  /* rotate image */
+}
+.option {
+    display: block;
+    background: #eee;
+    margin: 10px 0;
+    padding: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+    border: 1px solid #ddd;
+}
+
+.option:hover {
+    background: var(--accent-gold);
+    color: white;
+}
+
+.correct {
+    background: #2e7d32 !important;
+    color: white;
+}
+
+.wrong {
+    background: #c62828 !important;
+    color: white;
+}
+
+/* ===================== GALLERY ===================== */
+.gallery-section {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.gallery-title {
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    color: var(--accent-red);
+    margin-bottom: 15px;
+    border-bottom: 1px solid #aaa;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+}
+
+.gallery-card {
+    width: 220px;
+    background: rgba(255,255,255,0.7);
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.gallery-card:hover {
+    transform: translateY(-5px);
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 8px;
+}
+
+.gallery-caption {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #444;
+}
+
+/* ===================== MODAL ===================== */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-inner {
+    display: flex;
+    background-color: var(--paper-color);
+    padding: 15px;
+    border-radius: 8px;
+    max-width: 50%;
+    max-height: 70vh;
+    box-shadow: 2px 2px 12px rgba(0,0,0,0.25);
+}
+
+.modal-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+    padding-right: 20px;
+    border-right: 1px solid #ccc;
+}
+
+.modal-content {
+    max-width: 300px;
+    max-height: 50vh;
+    object-fit: contain;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    background: rgba(255,255,255,0.7);
+    padding: 10px;
+    border-radius: 6px;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+#modalCaption {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #444;
+    text-align: center;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    padding: 6px 10px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show #modalCaption {
+    opacity: 1;
+}
+
+.modal-right {
+    flex: 1;
+    padding: 10px 20px 0 10px;
+    overflow: visible;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+    color: #222;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
+
+/* footer */
+.site-footer {
+    background-color: var(--text-color);
+    color: #fff;
+    text-align: center;
+    font-family: 'Merriweather', serif;
+    font-size: 12px;
+    padding: 20px 10px;
+    line-height: 1.5;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
+}
+
+.footer-center {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 columns */
+    gap: 10px 5px; /* spacing between names */
+}
+
+.footer-grid div {
+    text-align: center;
+}
